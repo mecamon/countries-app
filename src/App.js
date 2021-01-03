@@ -2,8 +2,7 @@ import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import Flags from './Flags/Flags';
 import Details from './Details/Details';
@@ -11,18 +10,10 @@ import Details from './Details/Details';
 function App() {
   return (
     <Router>
-      <nav>
-        <ul>
-          <li><Link to="/">Flags</Link></li>
-          <li><Link to="/details">Details</Link></li>
-        </ul>
-      </nav>
-
       <Switch>
         <Route path="/" exact component={Flags} />
         <Route path="/details" component={Details} />
       </Switch>
-
     </Router>
   );
 }
