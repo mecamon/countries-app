@@ -1,25 +1,22 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-const Filter = () => {
-
-    const [filter, setFilter] = useState('none');
+const Filter = (props) => {
 
     const regions = [
         {name:'Africa', value: 'africa'},
-        {name:'America', value: 'america'},
+        {name:'America', value: 'americas'},
         {name:'Asia', value: 'asia'},
-        {name:'Europe', value: 'europa'},
+        {name:'Europe', value: 'europe'},
         {name:'Oceania', value: 'oceania'}
     ];
 
     const changeHandler = ({ target }) => {
-
-        setFilter(target.value);
+        props.onChange(target.value);
     }
 
     return (
         <div>
-            <select value={filter} onChange={ changeHandler }
+            <select onChange={ changeHandler }
             className="bg-white font-medium rounded-md mt-6 w-64 h-14 shadow"
                 >
                     <option key="10" defaultValue>Filter by Region</option>

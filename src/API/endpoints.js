@@ -9,22 +9,19 @@ const endpoints = {
 export class CountriesEndpoints {
     static getAll() {
         axios.get(endpoints.all)
-            .then(countries => {
-                console.log(countries);
-            }).catch(e => {console.log(e)});
+            .then(countries => countries.data
+            ).catch(e => {console.log(e)});
     }
 
     static getByName(countryName) {
         axios.get(endpoints.name+countryName)
-            .then(countries => {
-                console.log(countries);
-            }).catch(e => {console.log(e)});
+            .then(countries => countries.data
+            ).catch(e => {console.log(e)});
     }
 
     static getByRegion(regionName) {
         axios.get(endpoints.region+regionName)
-            .then(countries => {
-                console.log(countries);
-            }).catch(e => {console.log(e)});
+            .then(countries => countries.data
+            ).catch(e => {console.log(e)});
     }
 }
