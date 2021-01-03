@@ -4,9 +4,13 @@ import SearchBar from "../Flags/SearchBar";
 import Filter from "../Flags/Filter";
 import axios from "axios";
 import CountryCard from "./CountryCard";
+import CountryInfo from "./CountryInfo";
 
 const Flags = () => {
   const [countries, setCountries] = useState(null);
+  const [country, setCountry] = useState(null);
+  const [countryIsVisible, setCountryIsVisible] = useState(null);
+  const [countriesIsVisible, setCountriesIsVisible] = useState(true);
 
   useEffect(() => {
     (async function () {
@@ -36,13 +40,28 @@ const Flags = () => {
     })();
   };
 
+  const clickHandler = (value) => {
+    console.log(value);
+    setCountry(value);
+    setCountriesIsVisible(false);
+    setCountryIsVisible(true);
+  };
+
+  const countryInfoClickHandler = () => {
+
+    setCountry(null);
+    setCountriesIsVisible(true);
+    setCountryIsVisible(false);
+  }
+
   return (
-    <div className="w-full h-screen flex flex-col bg-gray-50">
+    <div className="w-full flex flex-col bg-gray-50">
       <Heading />
       <div id="container" className="px-6">
-        <SearchBar onInput={inputHandler} />
-        <Filter onChange={changeFilter} />
-        <CountryCard countries={countries} />
+        { countriesIsVisible &&  <SearchBar onInput={inputHandler} />}
+        { countriesIsVisible &&  <Filter onChange={changeFilter} />}
+        { countriesIsVisible && <CountryCard countries={countries} onClick={ clickHandler } /> }
+        { countryIsVisible && <CountryInfo selectedCountry={country} onClick={ countryInfoClickHandler }/> }
       </div>
     </div>
   );
