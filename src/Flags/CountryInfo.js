@@ -15,7 +15,7 @@ const CountryInfo = (props) => {
       </button>
 
       { props.selectedCountry && 
-      <div className="flex flex-col lg:flex-row lg:justify-center md:max-w-6xl">
+      <div className="flex flex-col lg:flex-row lg:justify-center">
         <div className="lg:w-5/12 md:mt-16">
           <img src={props.selectedCountry.flag} alt="Country flag" className="w-full h-auto"/>
         </div>
@@ -46,7 +46,7 @@ const CountryInfo = (props) => {
               </span>
             </div>
 
-            <div className="flex flex-col ml-14">
+            <div className="flex flex-col lg:ml-14">
               <span className="font-medium mb-4 dark:text-white">
                 Top Level Domain: <span className="font-normal"> {props.selectedCountry.topLevelDomain}</span>
               </span>
