@@ -11,6 +11,7 @@ const Flags = () => {
   const [country, setCountry] = useState(null);
   const [countryIsVisible, setCountryIsVisible] = useState(null);
   const [countriesIsVisible, setCountriesIsVisible] = useState(true);
+  const [dark, setDark] = useState(null);
 
   useEffect(() => {
     (async function () {
@@ -55,13 +56,14 @@ const Flags = () => {
   }
 
   return (
-    <div className="w-full flex flex-col bg-gray-50">
-      <Heading />
+    <div className="w-full flex flex-col bg-gray-50 dark:bg-dark-body">
+      <Heading/>
       <div id="container" className="px-6">
         { countriesIsVisible &&  <SearchBar onInput={inputHandler} />}
         { countriesIsVisible &&  <Filter onChange={changeFilter} />}
         { countriesIsVisible && <CountryCard countries={countries} onClick={ clickHandler } /> }
-        { countryIsVisible && <CountryInfo selectedCountry={country} onClick={ countryInfoClickHandler }/> }
+        { countryIsVisible && <CountryInfo selectedCountry={country} 
+          onClick={ countryInfoClickHandler } /> }
       </div>
     </div>
   );

@@ -4,5 +4,6 @@
 
 
 .btn {
-  @apply rounded-md flex justify-center items-center bg-white shadow-lg w-24 h-8
+  @apply rounded-md flex justify-center items-center bg-white 
+  dark:bg-dark-header shadow-lg w-24 h-8 dark:text-white
 }

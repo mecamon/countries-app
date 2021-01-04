@@ -17,7 +17,8 @@ const Filter = (props) => {
     <div>
       <select
         onChange={changeHandler}
-        className="bg-white font-medium rounded-md mt-6 w-64 h-14 shadow"
+        className="bg-white dark:bg-dark-header dark:text-white font-medium 
+        rounded-md mt-6 w-64 h-14 shadow"
       >
         <option key="10" defaultValue>
           Filter by Region
