@@ -62,12 +62,17 @@ const Flags = () => {
   return (
     <div className="w-full flex flex-col bg-gray-50 dark:bg-dark-body">
       <Heading isDark={darkMode} />
-      <div id="container" className="px-6">
-        { countriesIsVisible &&  <SearchBar onInput={inputHandler} />}
-        { countriesIsVisible &&  <Filter onChange={changeFilter} />}
+      <div id="container" className="px-6 pb-20">
+        { countriesIsVisible &&  
+        <div className="flex flex-col md:flex-row md:justify-between">
+          <SearchBar onInput={inputHandler} />
+          <Filter onChange={changeFilter} />
+        </div>}
         { countriesIsVisible && <CountryCard countries={countries} onClick={ clickHandler } /> }
+        <div className="flex justify-center">
         { countryIsVisible && <CountryInfo selectedCountry={country} 
           onClick={ countryInfoClickHandler } isDark={isDark} /> }
+        </div>
       </div>
     </div>
   );

@@ -6,13 +6,13 @@ const CountryCard = (props) => {
   }
 
   return (
-    <div className="w-full px-10 mt-10">
+    <div className="w-full px-4 2xl:px-10 xl:px-10 lg:2xl:px-10 mt-10 flex flex-row flex-wrap">
       {props.countries &&
         props.countries.map((country, index) => (
           <div
             key={index}
-            className="w-full md:min-w-0 mb-6 bg-white dark:bg-dark-header
-                flex flex-col flex-grow rounded-lg shadow-md cursor-pointer"
+            className="mb-6 w-full 2xl:w-1/5 2xl:mx-8 xl:w-1/4 xl:mx-8 lg:w-2/5 lg:mx-8 md:mx-20 md:max-w-md
+                bg-white dark:bg-dark-header flex flex-col flex-grow flex-shrink rounded-lg shadow-md cursor-pointer"
             onClick={ () => handleClick(country) }
           >
             <img

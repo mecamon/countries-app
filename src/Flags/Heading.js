@@ -9,10 +9,12 @@ const Heading = (props) => {
   const toggleMode = () => {
     if (!darkMode) {
       document.querySelector('html').classList.add('dark');
+      document.body.classList.add('bg-dark-body');
       setDarkMode(true);
       props.isDark(darkMode);
     } else if (darkMode) {
       document.querySelector('html').classList.remove('dark');
+      document.body.classList.remove('bg-dark-body');
       setDarkMode(false);
       props.isDark(darkMode);
     }
@@ -22,8 +24,8 @@ const Heading = (props) => {
       <div className="w-full flex flex-row justify-between items-center 
       bg-white dark:bg-dark-header shadow pr-6 pl-6">
           <h1 className="font-bold my-6 dark:text-white">Where in the world?</h1>
-          <div className="flex flex-row">
-              <img src={ !darkMode ? moon : sun} alt="" className="w-4 h-auto mr-2" />
+          <div className="flex flex-row items-center">
+              <img src={ !darkMode ? moon : sun} alt="" className="w-auto h-6 mr-2" />
               <button className="font-medium dark:text-white" 
               onClick={toggleMode}>{ !darkMode ? 'Dark Mode' : 'Light Mode' }</button>
           </div>

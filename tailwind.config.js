@@ -8,8 +8,7 @@ module.exports = {
         'dark-body': '#202d36',
       },
       minWidth: {
-        '0': '0',
-        '220': '220px',
+        '72': '18rem',
       }
     }
   },
