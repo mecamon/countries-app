@@ -1,4 +1,5 @@
 import leftArrow from '../assets/left-arrow.svg';
+import whiteLeftArrow from '../assets/white-left-arrow.svg';
 
 const CountryInfo = (props) => {
 
@@ -9,7 +10,7 @@ const CountryInfo = (props) => {
   return (
     <div>
       <button className="btn mb-20 mt-12 cursor-pointer" onClick={clickHandler}>
-        <img src={leftArrow} className="w-4 h-auto mr-2" alt="arrow icon"/>
+        <img src={!props.isDark ? whiteLeftArrow : leftArrow} className="w-4 h-auto mr-2" alt="arrow icon"/>
         Back
       </button>
 

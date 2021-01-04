@@ -2,7 +2,7 @@ import moon from '../assets/icon-moon.svg'
 import sun from '../assets/icon-sun.svg'
 import React, { useState } from 'react'
 
-const Heading = () => {
+const Heading = (props) => {
 
   const [ darkMode, setDarkMode ] = useState(false);
 
@@ -10,9 +10,11 @@ const Heading = () => {
     if (!darkMode) {
       document.querySelector('html').classList.add('dark');
       setDarkMode(true);
+      props.isDark(darkMode);
     } else if (darkMode) {
       document.querySelector('html').classList.remove('dark');
       setDarkMode(false);
+      props.isDark(darkMode);
     }
   }
 
