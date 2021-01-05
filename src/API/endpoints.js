@@ -1,27 +1,33 @@
-import axios from 'axios';
+import axios from "axios";
 
 const endpoints = {
-    all: 'https://restcountries.eu/rest/v2/all',
-    name: 'https://restcountries.eu/rest/v2/name/',
-    region: 'https://restcountries.eu/rest/v2/region/'
-}
+  all: "https://restcountries.eu/rest/v2/all",
+  name: "https://restcountries.eu/rest/v2/name/",
+  region: "https://restcountries.eu/rest/v2/region/",
+};
 
-export class CountriesEndpoints {
-    static getAll() {
-        axios.get(endpoints.all)
-            .then(countries => countries.data
-            ).catch(e => {console.log(e)});
+export class Endpoints {
+  static async all() {
+    try {
+      return await axios.get(endpoints.all);
+    } catch (error) {
+      console.log('Country not found!');
     }
+  }
 
-    static getByName(countryName) {
-        axios.get(endpoints.name+countryName)
-            .then(countries => countries.data
-            ).catch(e => {console.log(e)});
+  static async name(countryName) {
+    try {
+      return await axios.get(endpoints.name + countryName);
+    } catch (error) {
+      console.log('Country not found!');
     }
+  }
 
-    static getByRegion(regionName) {
-        axios.get(endpoints.region+regionName)
-            .then(countries => countries.data
-            ).catch(e => {console.log(e)});
+  static async region(regionName) {
+    try {
+      return await axios.get(endpoints.region + regionName);
+    } catch (error) {
+      console.log('Country not found!');
     }
+  }
 }

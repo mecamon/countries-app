@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import Heading from "../Flags/Heading";
 import SearchBar from "../Flags/SearchBar";
 import Filter from "../Flags/Filter";
-import axios from "axios";
 import CountryCard from "./CountryCard";
 import CountryInfo from "./CountryInfo";
+import { Endpoints } from "../API/endpoints";
 
 const Flags = () => {
   const [countries, setCountries] = useState(null);
@@ -15,34 +15,53 @@ const Flags = () => {
 
   useEffect(() => {
     (async function () {
-      const { data } = await axios.get("https://restcountries.eu/rest/v2/all");
+      try {
+        const { data } = await Endpoints.all();
 
       setCountries(data);
+      } catch (error) {
+        return
+      }
     })();
   }, []);
 
   const changeFilter = (value) => {
     (async function () {
-      const { data } = await axios.get(
-        "https://restcountries.eu/rest/v2/region/" + value
-      );
+      try {
+        
+        const { data } = await Endpoints.region(value);
 
-      setCountries(data);
+        setCountries(data);
+      } catch (error) {
+        return
+      }
     })();
   };
 
   const inputHandler = (value) => {
     (async function () {
-      const { data } = await axios.get(
-        "https://restcountries.eu/rest/v2/name/" + value
-      );
+      try {
 
-      setCountries(data);
+        let currentSearch = null
+
+        if(!value) {
+          const { data } = await Endpoints.all();
+
+          currentSearch = data;
+        } else {
+          const { data } = await Endpoints.name(value);
+
+          currentSearch = data;
+        }
+        setCountries(currentSearch);
+      } catch (error) {
+        return
+      }
     })();
   };
 
   const clickHandler = (value) => {
-    // console.log(value);
+    
     setCountry(value);
     setCountriesIsVisible(false);
     setCountryIsVisible(true);

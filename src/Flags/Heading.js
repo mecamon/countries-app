@@ -9,12 +9,17 @@ const Heading = (props) => {
   const toggleMode = () => {
     if (!darkMode) {
       document.querySelector('html').classList.add('dark');
+      document.body.classList.remove('bg-gray-50');
       document.body.classList.add('bg-dark-body');
+      
       setDarkMode(true);
       props.isDark(darkMode);
+      
     } else if (darkMode) {
-      document.querySelector('html').classList.remove('dark');
+      document.querySelector('html').classList.remove('dark');  
       document.body.classList.remove('bg-dark-body');
+      document.body.classList.add('bg-gray-50');
+
       setDarkMode(false);
       props.isDark(darkMode);
     }
